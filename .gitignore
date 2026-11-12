@@ -1,0 +1,39 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+wheels/
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Environment variables & secrets
+.env
+
+# Logs and runtime artifacts
+logs/
+*.log
+
+# Local databases and checkpoints
+data/
+*.db
+*.db-shm
+*.db-wal
+
+# Ephemeral code execution workspace
+scratch/ephemeral/
+scratch/
+
+# Testing & Linting
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# OS-specific
+.DS_Store
+Thumbs.db
