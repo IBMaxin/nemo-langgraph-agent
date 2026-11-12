@@ -1,7 +1,7 @@
 from src.agent.graph import build_guardrailed_graph
 
 
-def test_graph_compilation():
+async def test_graph_compilation():
     graph = build_guardrailed_graph(
         config_path="config/rails", checkpointer=None, interrupt_tools=False
     )
