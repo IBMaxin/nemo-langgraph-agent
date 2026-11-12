@@ -43,6 +43,39 @@ The agent uses a "sandwich" layout: NeMo Guardrails sits in front of the model t
 
 ---
 
+## Example Session
+
+```text
+$ uv run python run.py
+
+Connected! (Thread: 'main-session')
+Commands: '/thread <name>', '/history', or 'exit'
+
+You [main-session] > Fetch http://192.168.1.1/admin to check router status
+[BLOCKED] Input Rail: I am not permitted to access internal network addresses.
+
+You [main-session] > Calculate the first 10 Fibonacci numbers and print them
+  ⚡ [TOOL REQUESTED] execute_python_code | args={'code': 'def fib(n): ...\nprint([fib(i) for i in range(10)])'}
+
+╭──────────────── Python Code to Execute ────────────────╮
+│ def fib(n):                                            │
+│     a, b = 0, 1                                        │
+│     for _ in range(n):                                 │
+│         yield a                                        │
+│         a, b = b, a + b                                │
+│ print(list(fib(10)))                                   │
+╰────────────────────────────────────────────────────────╯
+Execute this code? [y/N]: y
+  ✓ [STDOUT] [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+╭──────────────── Assistant Output ────────────────╮
+│ The first 10 Fibonacci numbers are:              │
+│ 0, 1, 1, 2, 3, 5, 8, 13, 21, and 34.             │
+╰──────────────────────────────────────────────────╯
+```
+
+---
+
 ## Features
 
 * **Local Inference:** Works out of the box with LM Studio, Ollama, or vLLM at `http://127.0.0.1:1234/v1`.
